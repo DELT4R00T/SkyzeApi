@@ -1,4 +1,4 @@
-const express = require('express')
+cons express = require('express')
 var router = express.Router();
 __path = process.cwd()
 const fs = require('fs')
@@ -12,7 +12,7 @@ const { savetikVideo } = require('../scraper/savetik')
 const { happymodSearch } = require('../scraper/happymod')
 const { searchIlust } = require('../scraper/pixiv')
 const { tiktokHastag } = require('../scraper/tiktok_search')
-
+const { jarak } = require('../scraper/gmaps')
 
 //Biar Result nya 20
 //Disable Console Log
@@ -35,6 +35,12 @@ router.get('/pixiv', async(req, res) => {
 	var query = req.query.query
 	if (!query) return res.json({ message: 'masukan parameter query' })
 	var result = await searchIlust(query)
+	res.json({ result })
+})
+router.get('/gmaps', async(req, res) => {
+	var query = req.query.query
+	if (!query) return res.json({ message: 'masukan parameter query' })
+	var result = await gmaps(query)
 	res.json({ result })
 })
 router.get('/konachan', async(req, res) => {
