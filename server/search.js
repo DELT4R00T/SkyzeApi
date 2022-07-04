@@ -1,4 +1,4 @@
-cons express = require('express')
+const express = require('express')
 var router = express.Router();
 __path = process.cwd()
 const fs = require('fs')
@@ -40,7 +40,7 @@ router.get('/pixiv', async(req, res) => {
 router.get('/gmaps', async(req, res) => {
 	var query = req.query.query
 	if (!query) return res.json({ message: 'masukan parameter query' })
-	var result = await gmaps(query)
+	var result = await jarak(query)
 	res.json({ result })
 })
 router.get('/konachan', async(req, res) => {
