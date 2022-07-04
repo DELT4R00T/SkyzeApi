@@ -19,6 +19,7 @@ const { igStory, igStalk, igDownload } = require('../scraper/igdl')
 const { ytv, yta } = require('../scraper/ytdl')
 const { savefrom } = require('../scraper/savefrom')
 const zipi = require('../scraper/zippy')
+const { facebookdl, facebookdlv2 } = require('@bochilteam/scraper')
 
 async function shorts(url) {
   const res = await axios.get('https://tinyurl.com/api-create.php?url='+url)
@@ -134,7 +135,7 @@ router.get('/pixiv', async(req, res) => {
 router.get('/fbdl', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
-	var hasil = await dl(link)
+	var hasil = await facebookdl(link)
 	try {
 		res.json(hasil)
 	} catch(err) {
