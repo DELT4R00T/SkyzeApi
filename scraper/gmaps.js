@@ -15,3 +15,5 @@ async function jarak(dari, ke) {
   }
   return res
 }
+
+module.exports = jarak
