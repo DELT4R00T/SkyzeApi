@@ -2,7 +2,7 @@ const express = require('express')
 var router = express.Router();
 
 const { tebakgambar } = require('../scraper/index') 
-const { asahotak, tebakkata, caklontong } = require('@bochilteam/scraper')
+const { asahotak, tebakkata, caklontong, family100, tebakbendera } = require('@bochilteam/scraper')
 
 
 router.get('/tebakgambar', async(req, res) => {
@@ -36,6 +36,26 @@ router.get('/tebakkata', async(req, res) => {
 
 router.get('/caklontong', async(req, res) => {
 	var hasil = await caklontong()
+	try {
+		res.json(hasil)
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
+})
+
+router.get('/family100', async(req, res) => {
+	var hasil = await family100()
+	try {
+		res.json(hasil)
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
+})
+
+router.get('/tebakbendera', async(req, res) => {
+	var hasil = await tebakbendera()
 	try {
 		res.json(hasil)
 	} catch(err) {
