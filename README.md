@@ -1,10 +1,14 @@
 # simple-api
 
-Pake aja buat belajar, saya pun masih belajar
-Tapi Jangan lupa nama creator (ɔ◔‿◔)ɔ ♥
-Yang mau nambahin bisa Pull request kalo ada yang Error bisa langsung buat Issue
-Enjoy~ <3
+# How To Run?
 
+```js
+$ git clone https://github.com/Rizxyu/SkyzeApi.get
+$ cd SkyzeApi
+$ node index
+```
+
+you can run on termux / other
 ## 🛠️ Feature
 ```
 >> Play
@@ -83,7 +87,3 @@ Enjoy~ <3
 >> Qrcode Creator
 >> Hilih Generator
 ```
-
-## Thanks To
-* [`indrijunanda`](https://github.com/indrijunanda/RuangAdmin)
-* Anu-Team
