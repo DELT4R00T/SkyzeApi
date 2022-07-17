@@ -12,7 +12,7 @@ const {  mediafireDl, pinterestdl, scdl, sfiledl, savetik } = require('../scrape
 const { musicaldown } = require('../scraper/musicaldown')
 const { stickerDl } = require('../scraper/stickerpack')
 const { dl } = require('../scraper/aiovideodl')
-const { spotifydl } = require('../scraper/spotify')
+//const { spotifydl } = require('../scraper/spotify')
 const { jooxdl, joox } = require('../scraper/joox')
 const { pixivDownload } = require('../scraper/pixiv')
 const { igStory, igStalk, igDownload } = require('../scraper/igdl')
@@ -20,12 +20,41 @@ const { ytv, yta } = require('../scraper/ytdl')
 const { savefrom } = require('../scraper/savefrom')
 const zipi = require('../scraper/zippy')
 const { facebookdl, facebookdlv2 } = require('@bochilteam/scraper')
+const { Spotify } = require("spotifydl-core")
 
 async function shorts(url) {
   const res = await axios.get('https://tinyurl.com/api-create.php?url='+url)
   return res.data
 }
 
+router.get('/spotifydl', async(req, res) => {
+	var link = req.query.link
+	if (!link) return res.json({ message: 'masukan parameter Link' })
+
+const spotify = new Spotify({
+    clientId: 'acc6302297e040aeb6e4ac1fbdfd62c3',
+    clientSecret: '0e8439a1280a43aba9a5bc0a16f3f009'
+})
+//
+let sp = await spotify.getTrack(link)
+let spdl = await spotify.downloadTrack(link)
+
+var hasil = {
+creator: "Follow IG: rizxyux",
+judul: sp.name,
+artis: sp.artists,
+album: sp.album_name,
+rilis: sp.realese_date,
+thumb: sp.cover_url,
+audio: spdl
+}
+try {
+		res.json(hasil)
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
+})
 
 router.get('/igdl', async(req, res) => {
 	var link = req.query.link
