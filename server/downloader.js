@@ -22,6 +22,11 @@ const zipi = require('../scraper/zippy')
 const { facebookdl, facebookdlv2 } = require('@bochilteam/scraper')
 const { Spotify } = require("spotifydl-core")
 
+const spotify = new Spotify({
+    clientId: 'acc6302297e040aeb6e4ac1fbdfd62c3',
+    clientSecret: '0e8439a1280a43aba9a5bc0a16f3f009'
+})
+
 async function shorts(url) {
   const res = await axios.get('https://tinyurl.com/api-create.php?url='+url)
   return res.data
@@ -30,14 +35,9 @@ async function shorts(url) {
 router.get('/spotifydl', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
-
-const spotify = new Spotify({
-    clientId: 'acc6302297e040aeb6e4ac1fbdfd62c3',
-    clientSecret: '0e8439a1280a43aba9a5bc0a16f3f009'
-})
 //
-let sp = await spotify.getTrack(link)
-let spdl = await spotify.downloadTrack(link)
+var sp = await spotify.getTrack(link)
+var spdl = await spotify.downloadTrack(link)
 
 var hasil = {
 creator: "Follow IG: rizxyux",
