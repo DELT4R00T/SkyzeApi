@@ -44,10 +44,11 @@ creator: "Follow IG: rizxyux",
 judul: sp.name,
 artis: sp.artists,
 album: sp.album_name,
-rilis: sp.realese_date,
+rilis: sp.release_date,
 thumb: sp.cover_url,
 audio: spdl
 }
+
 try {
 		res.json(hasil)
 	} catch(err) {
